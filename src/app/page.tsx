@@ -1,6 +1,11 @@
-import Image from "next/image";
+'use client';
+
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div>
       <h1 className="text-3xl font-bold underline">
@@ -10,13 +15,16 @@ export default function Home() {
         This is a simple application to demonstrate user registration with
         referral codes.
       </p>
-      <Image
-        src="/images/illustration.png"
-        alt="Illustration"
-        width={500}
-        height={300}
-        className="mt-8"
-      />
+      <br />
+      <button onClick={() => router.push('/login')}>
+        || Tela Login |
+      </button>
+      <button onClick={() => router.push('/account')}>
+        | Tela Account |
+      </button>
+      <button onClick={() => router.push('/onboard')}>
+        | Tela Onboard ||
+      </button>
     </div>
   );
 }
