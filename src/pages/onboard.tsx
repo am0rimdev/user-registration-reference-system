@@ -11,10 +11,20 @@ export default function Onboard() {
   const [mensagem, setMensagem] = useState('');
   const router = useRouter();
 
+  const validarSenha = (senha: string) => {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    return regex.test(senha);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     setMensagem('');
+    if (!validarSenha(senha)) {
+      setMensagem('A senha deve ter no mínimo 6 caracteres, incluindo pelo menos 1 letra e 1 número.');
+      return;
+    }
+    
     try {
       const res = await fetch('/api/onboard', {
         method: 'POST',

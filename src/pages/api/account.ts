@@ -14,15 +14,16 @@ export default async function GET(
 
 	// 1. Pega o ID do usuário do parâmetro da URL
 	const { userId } = req.query;
+	const userIdStr = Array.isArray(userId) ? userId[0] : userId;
 
-	if (!userId) {
+	if (!userIdStr) {
 		return res.status(400).json({ message: 'ID do usuário não fornecido.' });
 	}
 
 	try {
 		// 2. Busca os dados do usuário usando o ID
 		const user = await prisma.user.findUnique({
-			where: { id: String(userId) },
+			where: { id: parseInt(userIdStr) },
 			include: {
 				_count: {
 					select: { referredUsers: true },
