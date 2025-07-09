@@ -25,7 +25,7 @@ export default function Login() {
         setTimeout(() => {
           if (data.userId) {
             localStorage.setItem('userId', data.userId);
-            router.push('/account');
+            router.push('/account/' + data.userId);
           }
         }, 1000);
       } else {
