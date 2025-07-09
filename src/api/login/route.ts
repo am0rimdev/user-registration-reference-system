@@ -13,7 +13,7 @@ export default async function POST(
 	}
 
 	try {
-		const { email, password } = req.body.data;
+		const { email, password } = await req.body.data;
 
 		// 1. Encontra o usuário pelo e-mail
 		const user = await prisma.user.findUnique({

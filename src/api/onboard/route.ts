@@ -37,7 +37,7 @@ export default async function POST(
 	}
 
     try {
-        const { email, password, inputReferralCode } = req.body.data;
+        const { email, password, inputReferralCode } = await req.body.data;
 
         if (!isValidEmail(email)) {
             throw new Error("Formato de e-mail inválido");
