@@ -43,13 +43,7 @@ export default async function GET(
 		// 3. Calcula o número de referências e o bônus
 		const referralCount = user._count.referredUsers;
 		const bonusReceived = referralCount * 5.00;
-
-		// 4. Atualiza o bônus no banco de dados
-		await prisma.user.update({
-			where: { id: user.id },
-			data: { bonus: bonusReceived },
-		});
-
+		
 		res.status(200).json({
 			referralCount,
 			bonusReceived,

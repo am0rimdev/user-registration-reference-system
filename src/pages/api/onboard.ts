@@ -79,6 +79,18 @@ export default async function POST(
             },
         });
 
+        // Atualiza o bônus do usuário referenciador, se houver
+        if (referredById) {
+            await prisma.user.update({
+                where: { id: referredById },
+                data: {
+                    bonus: {
+                        increment: 5.0,
+                    },
+                },
+            });
+        }
+
         return res.status(201).json({
             message: "Conta criada com sucesso",
             data: {
