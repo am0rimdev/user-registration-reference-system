@@ -1,3 +1,8 @@
+/**
+* @author: Emilly Júnia, Micael Pereira, Nífane Borges e Vínicius Alves Amorim
+* @description: API de login do usuário, valida credenciais e retorna o ID do usuário autenticado.
+*/
+
 import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 

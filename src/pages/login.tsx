@@ -1,3 +1,8 @@
+/**
+* @author: Emilly Júnia, Micael Pereira, Nífane Borges e Vínicius Alves Amorim
+* @description: Tela de login do usuário, com formulário para autenticação e redirecionamento para a conta.
+*/
+
 import styles from '../styles/login.module.css';
 import { useState } from 'react';
 import { useRouter } from 'next/router';

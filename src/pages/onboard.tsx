@@ -1,3 +1,8 @@
+/**
+* @author: Emilly Júnia, Micael Pereira, Nífane Borges e Vínicius Alves Amorim
+* @description: Tela de cadastro de usuário, incluindo validação de senha e campo para código de referência.
+*/
+
 import styles from '../styles/onboard.module.css';
 import { useState } from 'react';
 import { useRouter } from 'next/router';

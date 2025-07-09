@@ -1,3 +1,8 @@
+/**
+* @author: Emilly Júnia, Micael Pereira, Nífane Borges e Vínicius Alves Amorim
+* @description: API para consulta de dados da conta do usuário, como número de referências e bônus recebido.
+*/
+
 import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 

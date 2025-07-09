@@ -1,3 +1,8 @@
+/**
+* @author: Emilly Júnia, Micael Pereira, Nífane Borges e Vínicius Alves Amorim
+* @description: Página de exibição dos dados da conta do usuário, incluindo referências e valor recebido.
+*/
+
 import styles from '../../styles/account.module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
