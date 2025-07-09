@@ -10,24 +10,32 @@ export default function Account() {
 
   useEffect(() => {
     async function carregarDados() {
-      const res = await fetch('/api/usuario/dados');
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        alert('Usuário não autenticado. Redirecionando para login...');
+        router.push('/login');
+        return;
+      }
+
+      const res = await fetch(`/api/account?userId=${userId}`);
       const data = await res.json();
 
       if (res.ok) {
-        setReferencias(data.referencias);
-        setValorRecebido(data.valorRecebido);
+        setReferencias(data.referralCount);
+        setValorRecebido(data.bonusReceived);
       } else {
         alert('Erro ao carregar dados. Redirecionando para login...');
         router.push('/login');
       }
+
       setCarregando(false);
     }
-
+    
     carregarDados();
   }, [router]);
 
   const handleSair = async () => {
-    await fetch('/api/usuario/logout');
+    localStorage.removeItem('userId');
     router.push('/login');
   };
 

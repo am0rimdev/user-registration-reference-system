@@ -14,14 +14,29 @@ export default function Onboard() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch('/api/usuario/cadastrar', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, senha, codigoRef }),
-    });
-
-    const data = await res.json();
-    setMensagem(res.ok ? 'Usuário cadastrado com sucesso!' : data.erro || 'Erro ao cadastrar');
+    setMensagem('');
+    try {
+      const res = await fetch('/api/onboard', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data: {
+            email,
+            password: senha,
+            inputReferralCode: codigoRef || undefined,
+          },
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setMensagem('Usuário cadastrado com sucesso!');
+        setTimeout(() => router.push('/login'), 1500);
+      } else {
+        setMensagem(data.message || 'Erro ao cadastrar');
+      }
+    } catch (err) {
+      setMensagem('Erro ao conectar com o servidor');
+    }
   };
 
   return (

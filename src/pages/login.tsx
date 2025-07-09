@@ -12,15 +12,28 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const res = await fetch('/api/usuario/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, senha }),
-    });
-
-    const data = await res.json();
-    setMensagem(res.ok ? 'Login realizado com sucesso!' : data.erro || 'Erro ao fazer login');
+    setMensagem('');
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: { email, password: senha } }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setMensagem('Login realizado com sucesso!');
+        setTimeout(() => {
+          if (data.userId) {
+            localStorage.setItem('userId', data.userId);
+            router.push('/account');
+          }
+        }, 1000);
+      } else {
+        setMensagem(data.message || 'Erro ao fazer login');
+      }
+    } catch (err) {
+      setMensagem('Erro ao conectar com o servidor');
+    }
   };
 
   return (
