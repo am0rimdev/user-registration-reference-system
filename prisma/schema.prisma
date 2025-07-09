@@ -21,11 +21,11 @@ model User {
   referralCode String  @unique
   bonus        Decimal @default(0)
 
-  // This field is used to track the user who referred this user
+  // Esse campo é usado para rastrear o usuário que referenciou este usuário
   referredById Int?
   referredBy   User? @relation("UserReferrals", fields: [referredById], references: [id])
 
-  // This field is used to track the users that this user has referred
+  // Esse campo é usado para rastrear os usuários que este usuário referenciou
   referredUsers User[] @relation("UserReferrals")
 
   @@map("users")
