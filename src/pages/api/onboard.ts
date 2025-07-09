@@ -75,7 +75,6 @@ export default async function POST(
                 email,
                 password,
                 referralCode,
-                bonus: 0,
                 referredById: referredById ?? null,
             },
         });
