@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f7f7f7;
+  font-family: sans-serif;
+}
+
+.form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background-color: #90ee90; /* verde claro */
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #7ed97e;
+}
+
+.mensagem {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.redirectText {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.link {
+  color: #2e8b57; /* verde mais escuro */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.senhaWrapper {
+  position: relative;
+}
+
+.olho {
+  position: absolute;
+  right: 0px;
+  top: 45%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+}
